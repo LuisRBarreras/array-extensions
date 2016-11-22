@@ -19,4 +19,25 @@ describe('Array', function () {
 			assert.deepEqual(callback.getCall(2).args, [3,2]);
 		});
 	});
+
+	describe('#where', function() {
+		it('should return a new array filtered', function() {
+			//Setup
+			var array = [2, 5, 6];
+      var callback = sinon.stub();
+			callback.onCall(0).returns(false);
+			callback.onCall(1).returns(true);
+			callback.onCall(2).returns(true);
+
+			//Execute
+			var newArray = array.where(callback);
+
+			//Compare
+			assert.equal(callback.callCount,3);
+			assert.deepEqual(callback.getCall(0).args, [2]);
+			assert.deepEqual(callback.getCall(1).args, [5]);
+			assert.deepEqual(callback.getCall(2).args, [6]);
+			assert.deepEqual(newArray, [5,6]);
+		})
+	})
 });
