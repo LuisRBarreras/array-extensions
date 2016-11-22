@@ -16,5 +16,4 @@
 	} else {
 		throw  EACH_ERROR;
 	}
-
 })(Array);
