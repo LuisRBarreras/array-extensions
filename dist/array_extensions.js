@@ -1,5 +1,6 @@
-(function () {
+(function (Array) {
 	const EACH_ERROR = 'Function Each already exist';
+
 
 	function each(callback) {
 		var length = this.length;
@@ -16,4 +17,4 @@
 	} else {
 		throw  EACH_ERROR;
 	}
-})(Array);
+})(global.Array);

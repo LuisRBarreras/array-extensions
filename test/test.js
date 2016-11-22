@@ -1,31 +1,22 @@
 require('../dist/array_extensions');
 var assert = require('chai').assert;
+var sinon = require('sinon');
 
 describe('Array', function () {
 	describe('#each', function () {
 		it('should execute callback for each element', function () {
 			//Setup
 			var array = [1, 2, 3];
-			var callsCount = 0;
-			var itemsReceived = [];
-			var itemsExpected = [1, 2, 3];
-			var indexesReceived = [];
-			var indexesExpected = [0, 1, 2];
-
-			function callbackTest(item, index) {
-				itemsReceived.push(item);
-				indexesReceived.push(index);
-				callsCount++;
-
-			}
+			var callback  = sinon.spy();
 
 			//Execute
-			array.each(callbackTest);
+			array.each(callback);
 
 			//Compare
-			assert.equal(callsCount, 3);
-			assert.deepEqual(itemsReceived, itemsExpected);
-			assert.deepEqual(indexesReceived, indexesExpected);
+			assert.equal(callback.callCount, 3);
+			assert.deepEqual(callback.getCall(0).args, [1,0]);
+			assert.deepEqual(callback.getCall(1).args, [2,1]);
+			assert.deepEqual(callback.getCall(2).args, [3,2]);
 		});
 	});
 });

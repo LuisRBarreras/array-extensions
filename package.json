@@ -6,8 +6,8 @@
   "scripts": {
     "test": "mocha"
   },
-  "engines" : {
-    "node" : "^6.0"
+  "engines": {
+    "node": "^6.0"
   },
   "repository": {
     "type": "git",
@@ -21,6 +21,7 @@
   "homepage": "https://github.com/LuisRBarreras/array-extensions#readme",
   "devDependencies": {
     "chai": "^3.5.0",
-    "mocha": "^3.1.2"
+    "mocha": "^3.1.2",
+    "sinon": "^1.17.6"
   }
 }
