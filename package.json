@@ -1,0 +1,27 @@
+{
+  "name": "array-extensions",
+  "version": "1.0.0",
+  "description": "Arrays Extensions Exercise",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "engines" : {
+    "node" : "6.4.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LuisRBarreras/array-extensions.git"
+  },
+  "author": "lbarreras@nearsoft.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/LuisRBarreras/array-extensions/issues"
+  },
+  "homepage": "https://github.com/LuisRBarreras/array-extensions#readme",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^3.1.2"
+  }
+
+}
