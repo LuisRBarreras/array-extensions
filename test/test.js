@@ -1,7 +1,6 @@
 require('../dist/array_extensions');
 var assert = require('chai').assert;
 
-
 describe('Array', function () {
 	describe('#each', function () {
 		it('should execute callback for each element', function () {
@@ -22,7 +21,6 @@ describe('Array', function () {
 
 			//Execute
 			array.each(callbackTest);
-
 
 			//Compare
 			assert.equal(callsCount, 3);
