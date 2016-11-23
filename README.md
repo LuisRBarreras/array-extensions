@@ -67,3 +67,13 @@ Creates a new array containing ideally howMany elements, it could be less but no
         Number type
     spec
         Function to execute for each element and returns true or false. 
+        
+**6. skip(howMany) method.**
+Creates a new Array which will not include the first howMany elements.
+
+**Sintax**
+    array.skip(howMany)
+
+**Parameters**
+    howMany
+        Number type

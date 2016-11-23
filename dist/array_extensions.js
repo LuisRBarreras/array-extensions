@@ -4,13 +4,15 @@
 	const ANY_ERROR = 'Function Any already exist';
 	const SELECT_ERROR= 'Function Select already exist';
 	const TAKE_ERROR= 'Function Take already exist';
+	const TAKE_SKIP= 'Function Skip already exist';
 
 	var extensions = {
 		'each': { method: each, error: EACH_ERROR },
 		'where': { method: where, error:WHERE_ERROR },
 		'any': { method: any, error:ANY_ERROR },
 		'select': { method: select, error:SELECT_ERROR },
-		'take': { method: take, error:TAKE_ERROR }
+		'take': { method: take, error:TAKE_ERROR },
+		'skip': { method: skip, error:TAKE_SKIP}
 	};
 
 	function each(callback) {
@@ -82,6 +84,14 @@
 		return newArray.slice(0, size)
 	}
 
+	function skip(start) {
+		if (typeof start !== 'number') {
+			throw new TypeError('Excepted a number');
+		}
+
+		return this.slice(start, this.length);
+	}
+	
 	for (let key in extensions) {
 		if (!Array.prototype[key]) {
 			Array.prototype[key]= extensions[key].method
