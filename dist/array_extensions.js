@@ -2,11 +2,13 @@
 	const EACH_ERROR = 'Function Each already exist';
 	const WHERE_ERROR = 'Function Where already exist';
 	const ANY_ERROR = 'Function Any already exist';
+	const SELECT_ERROR= 'Function Select already exist';
 
 	var extensions = {
 		'each': { method: each, error: EACH_ERROR },
 		'where': { method: where, error:WHERE_ERROR },
-		'any': { method: any, error:ANY_ERROR }
+		'any': { method: any, error:ANY_ERROR },
+		'select': {method: select, error:SELECT_ERROR }
 	};
 
 	function each(callback) {
@@ -46,7 +48,19 @@
 		}
 		return false;
 	}
-	
+
+	function select(callback) {
+		var length = this.length;
+		var index = 0;
+		var newArray = [];
+
+		while (index < length) {
+			newArray.push(callback.call(null, this[index]));
+			index++;
+		}
+		return newArray;
+	}
+
 	for (let key in extensions) {
 		if (!Array.prototype[key]) {
 			Array.prototype[key]= extensions[key].method

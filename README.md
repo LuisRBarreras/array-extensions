@@ -44,3 +44,13 @@ This method shall return a true value if any of the elements in the array satisf
         whenever the spec function returns a true value then immediately stop execution and returns true. 
         In case that spec parameter is not a function object, 
         then it will be tested against each element of the array.
+        
+**4. select(spec) method.**
+Creates a new collection containing the elements returned by the spec function. 
+
+**Sintax**
+    array.select(spec)
+
+**Parameters**
+    spec
+        Function to execute for each element and should return a value. 
