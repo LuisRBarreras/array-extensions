@@ -193,15 +193,15 @@ describe('Array', function () {
 			assert.isTrue(callback.withArgs(children[1]).calledOnce);
 			assert.isTrue(callback.withArgs(children[2]).calledOnce);
 		});
-	});
 
-	it('Should throw error. invalid parameter type', function() {
-		//Setup
-		function callback() {
-			[1, 2, 3].take('hello', function(){});
-		}
+		it('Should throw error. invalid parameter type', function() {
+			//Setup
+			function callback() {
+				[1, 2, 3].take('hello', function(){});
+			}
 
-		//Execute and compare
-		assert.throws(callback, TypeError);
+			//Execute and compare
+			assert.throws(callback, TypeError);
+		});
 	});
 });
