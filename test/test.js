@@ -42,5 +42,75 @@ describe('Array', function () {
 			assert.isTrue(callback.withArgs(6).calledOnce);
 			assert.deepEqual(newArray, [5,6]);
 		})
-	})
+	});
+
+	describe('#any', function() {
+		it('should return true and call function 3 times', function() {
+			//Setup
+			var people = [
+				{ name: 'juan', age: 15 },
+				{ name: 'pablo', age: 16 },
+				{ name: 'topo', age: 18 },
+				{ name: 'pedro', age: 19 }
+	    ];
+			var callback = sinon.stub();
+			callback.withArgs({ name: 'juan', age: 15 }).returns(false);
+			callback.withArgs({ name: 'pablo', age: 16 }).returns(false);
+			callback.withArgs({ name: 'topo', age: 18 }).returns(true);
+			callback.withArgs({ name: 'pedro', age: 19 }).returns(true);
+
+			//Execute
+			var response = people.any(callback);
+
+			//Compare
+			assert.isTrue(response);
+			assert.equal(callback.callCount,3);
+			assert.isTrue(callback.withArgs({ name: 'juan', age: 15 }).calledOnce);
+			assert.isTrue(callback.withArgs({ name: 'pablo', age: 16 }).calledOnce);
+			assert.isTrue(callback.withArgs({ name: 'topo', age: 18 }).calledOnce);
+			assert.isNotTrue(callback.withArgs({ name: 'pedro', age: 19 }).calledOnce);
+		});
+
+		it('should return false and call function twice', function() {
+			//Setup
+			var people = [
+				{ name: 'juan', age: 15 },
+				{ name: 'pablo', age: 16 }
+	    ];
+			var callback = sinon.stub();
+			callback.withArgs({ name: 'juan', age: 15 }).returns(false);
+			callback.withArgs({ name: 'pablo', age: 16 }).returns(false);
+
+			//Execute
+			var response = people.any(callback);
+
+			//Compare
+			assert.isNotTrue(response);
+			assert.equal(callback.callCount,2);
+			assert.isTrue(callback.withArgs({ name: 'juan', age: 15 }).calledOnce);
+			assert.isTrue(callback.withArgs({ name: 'pablo', age: 16 }).calledOnce);
+		});
+
+		it('should return true and compare', function() {
+			//Setup
+			var array = ['hello', 'world'];
+
+			//Execute
+			var response = array.any('world');
+
+			//Compare
+			assert.isTrue(response);
+		});
+
+		it('should return false and compare', function() {
+			//Setup
+			var array = ['hello', 'world'];
+
+			//Execute
+			var response = array.any('worlds');
+
+			//Compare
+			assert.isFalse(response);
+		});
+	});
 });
