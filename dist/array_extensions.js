@@ -3,12 +3,14 @@
 	const WHERE_ERROR = 'Function Where already exist';
 	const ANY_ERROR = 'Function Any already exist';
 	const SELECT_ERROR= 'Function Select already exist';
+	const TAKE_ERROR= 'Function Take already exist';
 
 	var extensions = {
 		'each': { method: each, error: EACH_ERROR },
 		'where': { method: where, error:WHERE_ERROR },
 		'any': { method: any, error:ANY_ERROR },
-		'select': {method: select, error:SELECT_ERROR }
+		'select': { method: select, error:SELECT_ERROR },
+		'take': { method: take, error:TAKE_ERROR }
 	};
 
 	function each(callback) {
@@ -59,6 +61,25 @@
 			index++;
 		}
 		return newArray;
+	}
+
+	function take(size, callback) {
+		var length = this.length;
+		var index = 0;
+		var newArray = [];
+
+		if (typeof size !== 'number') {
+			throw new TypeError('Excepted a number');
+		}
+
+		while (index < length) {
+			let response = callback.call(null, this[index]);
+			if (response) {
+				newArray.push(this[index]);
+			}
+			index++;
+		}
+		return newArray.slice(0, size)
 	}
 
 	for (let key in extensions) {

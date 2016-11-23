@@ -54,3 +54,16 @@ Creates a new collection containing the elements returned by the spec function.
 **Parameters**
     spec
         Function to execute for each element and should return a value. 
+
+     
+**5. take(howMany, spec) method.**
+Creates a new array containing ideally howMany elements, it could be less but no more.
+
+**Sintax**
+    array.take(howMany, spec)
+
+**Parameters**
+    howMany
+        Number type
+    spec
+        Function to execute for each element and returns true or false. 
