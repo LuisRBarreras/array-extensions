@@ -1,5 +1,5 @@
 (function (Array) {
-	var extensions = [each, where, any, select, take, skip];
+	var extensions = [each, where, any, select, take, skip, first];
 	var errorMessages = extensions.reduce((ext, m) => {
 		ext[m.name] = `Function "${m.name}" already exists`;
 		return ext;
@@ -86,8 +86,28 @@
 		if (typeof start !== 'number') {
 			throw new TypeError('Excepted a number');
 		}
-
 		return this.slice(start, this.length);
 	}
-	
+
+	function first(callback=null) {
+		var result = null;
+		var length = this.length;
+		if(typeof callback === 'function') {
+			let index = 0;
+
+			while(index < length) {
+				let response = callback(this[index]);
+				if(response)  {
+					result=this[index];
+					break;
+				}
+				index++;
+			}
+		} else {
+			result = this[0]
+		}
+		return result
+	}
+
+
 })(global.Array);
