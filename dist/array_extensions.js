@@ -1,11 +1,17 @@
 (function (Array) {
-	const EACH_ERROR = 'Function Each already exist';
-	const WHERE_ERROR = 'Function Where already exist';
+	var extensions = [each, where];
+	var errorMessages = extensions.reduce((ext, m) => {
+		ext[m.name] = `Function "${m.name}" already exists`;
+		return ext;
+	},{});
 
-	var extensions = {
-		'each': { method: each, error: EACH_ERROR },
-		'where': { method: where, error:WHERE_ERROR}
-	};
+	extensions.forEach((element) => {
+		if(!Array.prototype[element.name]) {
+			Array.prototype[element.name] = element
+		} else {
+			throw errorMessages[element.name];
+		}
+	});
 
 	function each(callback) {
 		var length = this.length;
@@ -31,14 +37,4 @@
 		}
 		return newArray;
 	}
-
-	for(let key in extensions) {
-		if (!Array.prototype[key]) {
-			Array.prototype[key]= extensions[key].method
-		} else {
-			throw extensions[key].error
-		}
-	}
-
 })(global.Array);
-
