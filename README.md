@@ -77,3 +77,14 @@ Creates a new Array which will not include the first howMany elements.
 **Parameters**
     howMany
         Number type
+        
+**7. first(spec) method.**
+Returns the first element on collection that satisfies the specification.
+This method could return a null value if the collection is empty or if there is not match element.
+
+**Sintax**
+    array.first(spec)
+
+**Parameters**
+    spec
+        Function or null value
