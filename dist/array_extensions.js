@@ -1,15 +1,11 @@
 (function (Array) {
 	var extensions = [each, where];
-	var errorMessages = extensions.reduce((ext, m) => {
-		ext[m.name] = `Function "${m.name}" already exists`;
-		return ext;
-	},{});
 
-	extensions.forEach((element) => {
+	extensions.forEach(element => {
 		if(!Array.prototype[element.name]) {
 			Array.prototype[element.name] = element
 		} else {
-			throw errorMessages[element.name];
+			throw `Function "${element.name}" already exists`;
 		}
 	});
 
