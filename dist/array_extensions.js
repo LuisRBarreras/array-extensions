@@ -83,7 +83,8 @@
 	}
 
 	function skip(start) {
-		if (typeof start !== 'number') {
+		var isNotNumber = typeof start !== 'number';
+		if (isNotNumber) {
 			throw new TypeError('Excepted a number');
 		}
 		return this.slice(start, this.length);
