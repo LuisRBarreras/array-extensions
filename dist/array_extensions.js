@@ -93,7 +93,8 @@
 	function first(callback=null) {
 		var result = null;
 		var length = this.length;
-		if(typeof callback === 'function') {
+		var isFunction = typeof callback === 'function';
+		if(isFunction) {
 			let index = 0;
 
 			while(index < length) {
@@ -109,6 +110,4 @@
 		}
 		return result
 	}
-
-
 })(global.Array);
