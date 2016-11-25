@@ -1,5 +1,5 @@
 (function (Array) {
-	var extensions = [each, where];
+	var extensions = [each, where, any];
 	var errorMessages = extensions.reduce((ext, m) => {
 		ext[m.name] = `Function "${m.name}" already exists`;
 		return ext;
@@ -12,7 +12,7 @@
 			throw errorMessages[element.name];
 		}
 	});
-
+	
 	function each(callback) {
 		var length = this.length;
 		var index = 0;
@@ -36,5 +36,18 @@
 			index++;
 		}
 		return newArray;
+	}
+
+	function any(spec) {
+		var length = this.length;
+		var index = 0;
+		var isFunction  = (typeof spec === 'function');
+
+		while (index < length) {
+			let result = isFunction ? spec(this[index]) : this[index] === spec;
+			if (result) return true;
+			index++
+		}
+		return false;
 	}
 })(global.Array);
