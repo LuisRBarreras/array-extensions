@@ -106,3 +106,17 @@ if no specification is present then it will return the array's length.
 - **Parameters**
     * spec
         Function or null value
+
+##10. index(spec) method
+Returns the zero based position in the array of the element that satisfies
+the specification. The specification can be either an object value or a function.
+
+- **Syntax**
+    ```
+    array.index(number => number === 1)
+    array.index(1)
+    ```
+
+- **Parameters**
+    * spec
+        Function or object value
