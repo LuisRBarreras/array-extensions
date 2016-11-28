@@ -3,7 +3,7 @@
 
 	extensions.forEach(element => {
 		if(!Array.prototype[element.name]) {
-			Array.prototype[element.name] = element
+			Array.prototype[element.name] = element;
 		} else {
 			throw `Function "${element.name}" already exists`;
 		}
