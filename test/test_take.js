@@ -35,7 +35,7 @@ describe('Array #take', function() {
 
         //Compare
         assert.deepEqual(response, expected);
-        assert.equal(callback.callCount, 3);
+        assert.equal(callback.callCount, 1);
     });
 
     it('Should throw error. invalid parameter type', function() {
