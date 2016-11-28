@@ -24,10 +24,11 @@ describe('Array #first', function() {
 
 			//Execute
 			var response = fixtures.children.first(callback);
+			console.log(response);
 
 			//Compare
 			assert.deepEqual(response, expected);
-			assert.equal(callback.callCount, 3);
+			assert.equal(callback.callCount, 2);
 		});
 
 		it('Should return null, not pass the spec condition', function() {
@@ -35,10 +36,10 @@ describe('Array #first', function() {
 			var callback = sinon.spy(child => child.sex === null);
 
 			//Execute
-			var response = !!fixtures.children.first(callback);
+			var response = fixtures.children.first(callback);
 
 			//Compare
 			assert.equal(callback.callCount, 3);
-			assert.isFalse(response);
+			assert.isNull(response);
 		});
 	});

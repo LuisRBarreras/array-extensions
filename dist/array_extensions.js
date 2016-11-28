@@ -85,8 +85,21 @@
 	}
 
 	function first(callback=null) {
+		var length = this.length;
+		var index = 0;
 		var isFunction = typeof callback === 'function';
-		return isFunction ? this.filter(callback)[0] : this[0];
 
+		if(isFunction) {
+			while(index < length) {
+				let result = callback.call(null, this[index]);
+				if(result) {
+					return this[index];
+				}
+				index++;
+			}
+		} else {
+			return this[0];
+		}
+		return null;
 	}
 })(global.Array);
