@@ -64,22 +64,11 @@
 	}
 
 	function take(size, callback) {
-		var length = this.length;
-		var index = 0;
-		var newArray = [];
-
 		if (typeof size !== 'number') {
 			throw new TypeError('Excepted a number');
 		}
 
-		while (index < length) {
-			let response = callback.call(null, this[index]);
-			if (response) {
-				newArray.push(this[index]);
-			}
-			index++;
-		}
-		return newArray.slice(0, size)
+		return this.filter(callback).slice(0, size);
 	}
 
 	function skip(start) {
