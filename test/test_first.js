@@ -8,7 +8,6 @@ var fixtures = jsonfile.readFileSync(file);
 
 describe('Array #first', function() {
 		it('Should return first element', function() {
-
 			//Execute
 			var response = fixtures.numbers.first();
 
@@ -24,7 +23,6 @@ describe('Array #first', function() {
 
 			//Execute
 			var response = fixtures.children.first(callback);
-			console.log(response);
 
 			//Compare
 			assert.deepEqual(response, expected);
