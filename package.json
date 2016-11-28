@@ -4,6 +4,7 @@
   "description": "Arrays Extensions Exercise",
   "main": "index.js",
   "scripts": {
+    "build": "jshint dist/array_extensions.js",
     "test": "mocha"
   },
   "engines": {
@@ -21,6 +22,7 @@
   "homepage": "https://github.com/LuisRBarreras/array-extensions#readme",
   "devDependencies": {
     "chai": "^3.5.0",
+    "jshint": "^2.9.4",
     "mocha": "^3.1.2",
     "sinon": "^1.17.6"
   }

@@ -7,7 +7,7 @@
 
 	extensions.forEach((element) => {
 		if(!Array.prototype[element.name]) {
-			Array.prototype[element.name] = element
+			Array.prototype[element.name] = element;
 		} else {
 			throw errorMessages[element.name];
 		}
@@ -31,7 +31,7 @@
 		while (index < length) {
 			let response = callback.call(null, this[index]);
 			if (response === true) {
-				newArray.push(this[index])
+				newArray.push(this[index]);
 			}
 			index++;
 		}
