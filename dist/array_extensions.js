@@ -52,15 +52,7 @@
 	}
 
 	function select(callback) {
-		var length = this.length;
-		var index = 0;
-		var newArray = [];
-
-		while (index < length) {
-			newArray.push(callback.call(null, this[index]));
-			index++;
-		}
-		return newArray;
+		return this.map(callback);
 	}
 
 })(global.Array);
