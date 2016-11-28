@@ -27,20 +27,18 @@ describe('Array #first', function() {
 
 			//Compare
 			assert.deepEqual(response, expected);
-			assert.equal(callback.callCount, 2);
+			assert.equal(callback.callCount, 3);
 		});
 
 		it('Should return null, not pass the spec condition', function() {
 			//Setup
-			var expected =  null;
 			var callback = sinon.spy(child => child.sex === null);
 
-
 			//Execute
-			var response = fixtures.children.first(callback);
+			var response = !!fixtures.children.first(callback);
 
 			//Compare
 			assert.equal(callback.callCount, 3);
-			assert.deepEqual(response, expected);
+			assert.isFalse(response);
 		});
 	});
