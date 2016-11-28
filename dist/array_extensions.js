@@ -1,5 +1,5 @@
 (function (Array) {
-	var extensions = [each, where, any, select, take, skip, first, last, count, index];
+	var extensions = [each, where, any, select, take, skip, first, last, count, index, pluck];
 	var errorMessages = extensions.reduce((ext, m) => {
 		ext[m.name] = `Function "${m.name}" already exists`;
 		return ext;
@@ -154,6 +154,14 @@
 			arrayIndex++;
 		}
 		return -1;
+	}
+
+	function pluck(property) {
+		return this.map(element => {
+			if (element.hasOwnProperty(property)) {
+				return element[property];
+			}
+		});
 	}
 
 })(global.Array);

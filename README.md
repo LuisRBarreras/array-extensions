@@ -120,3 +120,13 @@ the specification. The specification can be either an object value or a function
 - **Parameters**
     * spec
         Function or object value
+
+##11. pluck(property) method
+Returns a new array containing that property value for each element on the array.
+
+- **Syntax**
+    ``` array.pluck('property')```
+
+- **Parameters**
+    * property
+        String representing a name property
