@@ -1,5 +1,5 @@
 (function (Array) {
-	var extensions = [each, where, any, select, take, skip, first, last];
+	var extensions = [each, where, any, select, take, skip, first, last, count];
 	var errorMessages = extensions.reduce((ext, m) => {
 		ext[m.name] = `Function "${m.name}" already exists`;
 		return ext;
@@ -121,4 +121,24 @@
 		}
 		return null;
 	}
+
+	function count(callback=null) {
+		var length = this.length;
+		var index = 0;
+		var isFunction = typeof callback === 'function';
+		var counter = 0;
+		if(!isFunction) {
+			return length;
+		} else {
+			while(index < length) {
+				let result = callback.call(null, this[index]);
+				if(result) {
+					counter++;
+				}
+				index++;
+			}
+		}
+		return counter;
+	}
+
 })(global.Array);
