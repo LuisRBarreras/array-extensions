@@ -46,7 +46,7 @@
 		while (index < length) {
 			let result = isFunction ? spec(this[index]) : this[index] === spec;
 			if (result) return true;
-			index++
+			index++;
 		}
 		return false;
 	}
