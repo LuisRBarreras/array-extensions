@@ -10,5 +10,6 @@
         { "name": "ana", "sex": "f" },
         { "name": "fosto", "sex": "m" },
         { "name": "jane", "sex": "f" }
-  ]
+  ],
+  "mixValues": ["hello", 1, 10, "world"]
 }

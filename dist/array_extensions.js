@@ -1,5 +1,5 @@
 (function (Array) {
-	var extensions = [each, where, any, select, take, skip, first, last, count, index, pluck];
+	var extensions = [each, where, any, select, take, skip, first, last, count, index, pluck, sum];
 	var errorMessages = extensions.reduce((ext, m) => {
 		ext[m.name] = `Function "${m.name}" already exists`;
 		return ext;
@@ -162,4 +162,27 @@
 		});
 	}
 
+	function sum(spec=null) {
+		let result;
+		let anyIsString = this.any(x=> typeof x === 'string');
+
+		if(anyIsString) {
+			result = this.join("");
+		} else if(spec) {
+			let length = this.length;
+			let arrayIndex = 0;
+			let total = 0;
+			while(arrayIndex < length) {
+				total += spec.call(null,this[arrayIndex]);
+				arrayIndex++;
+			}
+			result = total;
+		} else {
+			spec = (a, b) => a + b;
+			result = this.reduce(spec, 0);
+		}
+		return result;
+
+	}
 })(global.Array);
+
