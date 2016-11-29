@@ -16,23 +16,21 @@ describe('Array #max', function () {
 		assert.equal(result, null);
 	});
 
-	it('Should find max integer on array of numbers', function() {
-		//Execute
-		var result = fixtures.numbers.max();
+	it('Should use comparator to find max element', function() {
+		//Setup
+		var expected = { "name": "pablo", "age": 20 };
+		var callback = function(a, b) {
+			return a.age - b.age;
+		};
 
-		//Compare
-		assert.equal(result, 5);
+		//Execute
+		var result = fixtures.peopleRandom.max(callback);
+
+		// Compare
+		assert.deepEqual(expected, result);
 	});
 
-	it('Should return first element', function() {
-		//Execute
-		var result = fixtures.numbersInverter.max();
-
-		//Compare
-		assert.equal(result, 5);
-	});
-
-	it('Should find the person older, checking the attribute age', function() {
+	it('Should use comparator to find max element in different order', function() {
 		//Setup
 		var expected = { name: 'pedro', age: 19 };
 		var callback = function(a, b) {
@@ -45,5 +43,13 @@ describe('Array #max', function () {
 		//Compare
 		assert.deepEqual(expected, result);
 
+	});
+
+	it('Should return first element', function() {
+		//Execute
+		var result = fixtures.numbers.max();
+
+		//Compare
+		assert.equal(result, 5);
 	});
 });
