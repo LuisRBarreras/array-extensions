@@ -1,7 +1,7 @@
 (function (Array) {
 	var extensions = [each, where, any, select, take, skip];
 
-	extensions.forEach(element => {
+	extensions.forEach((element) => {
 		if(!Array.prototype[element.name]) {
 			Array.prototype[element.name] = element;
 		} else {
@@ -27,7 +27,7 @@
 		while (index < length) {
 			let response = callback.call(null, this[index]);
 			if (response === true) {
-				newArray.push(this[index])
+				newArray.push(this[index]);
 			}
 			index++;
 		}
@@ -42,7 +42,7 @@
 		while (index < length) {
 			let result = isFunction ? spec(this[index]) : this[index] === spec;
 			if (result) return true;
-			index++
+			index++;
 		}
 		return false;
 	}
