@@ -1,5 +1,5 @@
 (function (Array) {
-	var extensions = [each, where, any, select, take, skip, max];
+	var extensions = [each, where, any, select, take, skip, max, min];
 
 	extensions.forEach((element) => {
 		if(!Array.prototype[element.name]) {
@@ -100,5 +100,26 @@
 		}
 		return this[maxIndex];
 	}
+
+	function min(comparator=null) {
+		var length = this.length;
+		if(length < 1) {
+			return null;
+		}
+
+		if(comparator === null) {
+			return Math.min(...this);
+		}
+
+		let minIndex = 0;
+		for(let i=1; i < length; i++) {
+			let result = comparator.call(null, this[i], this[minIndex]);
+			if(result < 0) {
+				minIndex = i;
+			}
+		}
+		return this[minIndex];
+	}
+
 
 })(global.Array);
