@@ -3,11 +3,11 @@
 	var errorMessages = extensions.reduce((ext, m) => {
 		ext[m.name] = `Function "${m.name}" already exists`;
 		return ext;
-	}, {});
+	},{});
 
 	extensions.forEach((element) => {
-		if (!Array.prototype[element.name]) {
-			Array.prototype[element.name] = element
+		if(!Array.prototype[element.name]) {
+			Array.prototype[element.name] = element;
 		} else {
 			throw errorMessages[element.name];
 		}
@@ -31,7 +31,7 @@
 		while (index < length) {
 			let response = callback.call(null, this[index]);
 			if (response === true) {
-				newArray.push(this[index])
+				newArray.push(this[index]);
 			}
 			index++;
 		}
@@ -46,7 +46,7 @@
 		while (index < length) {
 			let result = isFunction ? spec(this[index]) : this[index] === spec;
 			if (result) return true;
-			index++
+			index++;
 		}
 		return false;
 	}
@@ -84,5 +84,5 @@
 
 		return this.slice(start, this.length);
 	}
-	
+
 })(global.Array);
