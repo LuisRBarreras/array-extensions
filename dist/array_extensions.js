@@ -37,7 +37,7 @@
 	function any(spec) {
 		var length = this.length;
 		var index = 0;
-		var isFunction  = (typeof spec === 'function');
+		var isFunction = (typeof spec === 'function');
 
 		while (index < length) {
 			let result = isFunction ? spec(this[index]) : this[index] === spec;
