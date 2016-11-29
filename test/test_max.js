@@ -32,14 +32,6 @@ describe('Array #max', function () {
 		assert.equal(result, 5);
 	});
 
-	it('Should find max on each element using the comparator function', function() {
-		//Execute
-		var result = fixtures.numbers.max();
-
-		//Compare
-		assert.equal(result, 5);
-	});
-
 	it('Should find the person older, checking the attribute age', function() {
 		//Setup
 		var expected = { name: 'pedro', age: 19 };
