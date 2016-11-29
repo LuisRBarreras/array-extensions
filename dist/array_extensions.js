@@ -1,5 +1,5 @@
 (function (Array) {
-	var extensions = [each, where, any, select, take];
+	var extensions = [each, where, any, select, take, skip];
 	var errorMessages = extensions.reduce((ext, m) => {
 		ext[m.name] = `Function "${m.name}" already exists`;
 		return ext;
@@ -76,4 +76,13 @@
 		}
 	}
 
+	function skip(start) {
+		var isNotNumber = typeof start !== 'number';
+		if (isNotNumber) {
+			throw new TypeError('Excepted a number');
+		}
+
+		return this.slice(start, this.length);
+	}
+	
 })(global.Array);
