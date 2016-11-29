@@ -158,9 +158,7 @@
 
 	function pluck(property) {
 		return this.map(element => {
-			if (element.hasOwnProperty(property)) {
 				return element[property];
-			}
 		});
 	}
 
