@@ -66,13 +66,17 @@ Creates a new array containing ideally howMany elements, it could be less but no
         the size of array result if there are enough elements.
     * spec
         Function to execute for each element and returns true or false.
+        
+## 13. max(comparator) method
+Return the maximum value on the collection, a null value is return if
+the array is empty. If not `comparator` is specified then it evaluates
+the array elements as if they are numbers.
 
-## 6. skip(howMany) method.
-Creates a new Array which will not include the first howMany elements.
-
-- **Sintax**
-    ```array.skip(howMany)```
-
+- **Syntax**
+    ` array.sum(function(a,b) { 
+        a.length - b.length
+    })`
+    
 - **Parameters**
-    howMany
-        the size of array result if there are enough elements.
+    * comparator
+        Function or null value

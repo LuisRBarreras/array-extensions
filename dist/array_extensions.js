@@ -1,5 +1,6 @@
 (function (Array) {
-	var extensions = [each, where, any, select, take, skip];
+
+	var extensions = [each, where, any, select, take, max];
 
 	extensions.forEach((element) => {
 		if(!Array.prototype[element.name]) {
@@ -72,12 +73,26 @@
 		}
 	}
 
-	function skip(start) {
-		var isNotNumber = typeof start !== 'number';
-		if (isNotNumber) {
-			throw new TypeError('Excepted a number');
+	function max(comparator = null) {
+		var length = this.length;
+		if(length < 1) {
+			return null;
 		}
 
-		return this.slice(start, this.length);
+		if(comparator === null) {
+			return Math.max(...this);
+		}
+
+		let max;
+		for(let i=0; i < length-1; i++) {
+			let result = comparator.call(null, this[i], this[i+1]);
+			if(result >= 0) {
+				max = i;
+			} else if(result < 0) {
+				max = i+1;
+			}
+		}
+		return this[max];
 	}
+
 })(global.Array);
