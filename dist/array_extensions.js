@@ -91,16 +91,14 @@
 			return Math.max(...this);
 		}
 
-		let max;
-		for(let i=0; i < length-1; i++) {
-			let result = comparator.call(null, this[i], this[i+1]);
-			if(result >= 0) {
-				max = i;
-			} else {
-				max = i+1;
+		var maxIndex = 0;
+		for(let i=1; i < length; i++) {
+			let result = comparator.call(null, this[i], this[maxIndex]);
+			if(result > 0) {
+				maxIndex = i;
 			}
 		}
-		return this[max];
+		return this[maxIndex];
 	}
 
 })(global.Array);

@@ -83,7 +83,7 @@ the array is empty. If not `comparator` is specified then it evaluates
 the array elements as if they are numbers.
 
 - **Syntax**
-    ` array.sum(function(a,b) { 
+    ` array.max(function(a,b) { 
         a.length - b.length
     })`
     
