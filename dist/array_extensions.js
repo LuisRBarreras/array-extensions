@@ -81,7 +81,7 @@
 		return this.slice(start, this.length);
 	}
 
-	function max(comparator = null) {
+	function max(comparator=null) {
 		var length = this.length;
 		if(length < 1) {
 			return null;
