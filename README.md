@@ -66,6 +66,16 @@ Creates a new array containing ideally howMany elements, it could be less but no
         the size of array result if there are enough elements.
     * spec
         Function to execute for each element and returns true or false.
+
+## 6. skip(howMany) method.
+Creates a new Array which will not include the first howMany elements.
+
+- **Sintax**
+    ```array.skip(howMany)```
+
+- **Parameters**
+    howMany
+        the size of array result if there are enough elements.
         
 ## 13. max(comparator) method
 Return the maximum value on the collection, a null value is return if
