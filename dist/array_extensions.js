@@ -85,16 +85,16 @@
 		var index = 0;
 		var isFunction = typeof callback === 'function';
 
-		if(isFunction) {
-			while(index < length) {
-				let result = callback.call(null, this[index]);
-				if(result) {
-					return this[index];
-				}
-				index++;
-			}
-		} else {
+		if(!isFunction) {
 			return this[0];
+		}
+
+		while(index < length) {
+			let result = callback.call(null, this[index]);
+			if(result) {
+				return this[index];
+			}
+			index++;
 		}
 		return null;
 	}
