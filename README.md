@@ -83,7 +83,22 @@ the array is empty. If not `comparator` is specified then it evaluates
 the array elements as if they are numbers.
 
 - **Syntax**
-    ` array.sum(function(a,b) { 
+    ` array.max(function(a,b) { 
+        a.length - b.length
+    })`
+    
+- **Parameters**
+    * comparator
+        Function or null value
+
+
+## 14. min(comparator) method
+Return the minimum value on the collection, a null value is return if
+the array is empty. If not `comparator` is specified then it evaluates
+the array elements as if they are numbers.
+
+- **Syntax**
+    ` array.min(function(a,b) { 
         a.length - b.length
     })`
     
