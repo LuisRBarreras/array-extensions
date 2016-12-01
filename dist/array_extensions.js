@@ -1,5 +1,5 @@
 (function (Array) {
-	var extensions = [each, where, any, select, take, skip];
+	var extensions = [each, where, any, select, take, skip, first];
 
 	extensions.forEach((element) => {
 		if(!Array.prototype[element.name]) {
@@ -77,7 +77,25 @@
 		if (isNotNumber) {
 			throw new TypeError('Excepted a number');
 		}
-
 		return this.slice(start, this.length);
+	}
+
+	function first(callback=null) {
+		var length = this.length;
+		var index = 0;
+		var isFunction = typeof callback === 'function';
+
+		if(!isFunction) {
+			return this[0];
+		}
+
+		while(index < length) {
+			let result = callback.call(null, this[index]);
+			if(result) {
+				return this[index];
+			}
+			index++;
+		}
+		return null;
 	}
 })(global.Array);
