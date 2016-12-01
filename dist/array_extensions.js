@@ -87,7 +87,7 @@
 		for(let i=0; i < length; i++) {
 			let isArray = Array.isArray(this[i]);
 			if(isArray) {
-				result = result.concat(flatten.call(this[i], null));
+				result.push(...flatten.call(this[i], null));
 			} else {
 				result.push(this[i]);
 			}
