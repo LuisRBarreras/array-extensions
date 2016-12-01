@@ -147,16 +147,14 @@
 	}
 
 	function flatten() {
-		var length = this.length;
-		var result = [];
-		for(let i=0; i < length; i++) {
-			let isArray = Array.isArray(this[i]);
+		return this.reduce((a, b) => {
+			let isArray = Array.isArray(b);
 			if(isArray) {
-				result.push(...flatten.call(this[i], null));
+					a.push(...flatten.call(b));
 			} else {
-				result.push(this[i]);
+				a.push(b);
 			}
-		}
-		return result;
+			return a;
+		}, []);
 	}
 })(global.Array);
