@@ -96,3 +96,13 @@ This methoud could return a null value if the colllection is empty or if there i
 - **Parameters**
     * spec
         Function or null value
+        
+##9. count(spec) method
+Returns the number of elements on the collection that satisfies the specification
+if no specification is present then it will return the array's length.
+
+- **Syntax**
+    ```array.count(number => number > 2)```
+- **Parameters**
+    * spec
+        Function or null value
