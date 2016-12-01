@@ -1,0 +1,6 @@
+; indicate this is the root of the project
+root = true
+
+[*]
+indent_style = space
+indent_size = 4
