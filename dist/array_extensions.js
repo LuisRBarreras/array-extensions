@@ -1,5 +1,5 @@
 (function (Array) {
-	var extensions = [each, where, any, select, take, skip];
+	var extensions = [each, where, any, select, take, skip, flatten];
 
 	extensions.forEach((element) => {
 		if(!Array.prototype[element.name]) {
@@ -80,4 +80,19 @@
 
 		return this.slice(start, this.length);
 	}
+
+	function flatten() {
+		var length = this.length;
+		var result = [];
+		for(let i=0; i < length; i++) {
+			let isArray = Array.isArray(this[i]);
+			if(isArray) {
+				result = result.concat(flatten.call(this[i], null));
+			} else {
+				result.push(this[i]);
+			}
+		}
+		return result;
+	}
+
 })(global.Array);
