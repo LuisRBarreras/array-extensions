@@ -172,14 +172,8 @@
 			return Math.max(...this);
 		}
 
-		var maxIndex = 0;
-		for(let i=1; i < length; i++) {
-			let result = comparator.call(null, this[i], this[maxIndex]);
-			if(result > 0) {
-				maxIndex = i;
-			}
-		}
-		return this[maxIndex];
+		let cb = (a,b) => comparator(a ,b) > 0 ? a : b;
+		return this.reduce(cb, this[0]);
 	}
 
 })(global.Array);
