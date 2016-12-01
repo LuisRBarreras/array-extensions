@@ -1,5 +1,5 @@
 (function (Array) {
-	var extensions = [each, where, any, select, take, skip, first, last, count, index, pluck];
+	var extensions = [each, where, any, select, take, skip, first, last, count, index, pluck, sum];
 
 	extensions.forEach((element) => {
 		if(!Array.prototype[element.name]) {
@@ -148,5 +148,17 @@
 
 	function pluck(property) {
 		return this.map(element => element[property]);
+	}
+
+	function sum(spec=null) {
+		let anyIsString = this.any(x => typeof x === 'string');
+		let isFunction = typeof spec === 'function';
+
+		if(anyIsString) {
+			return this.join("");
+		}
+
+		let cb = isFunction ? (a, b) => a + spec(b) : (a, b) => a + b;
+		return this.reduce(cb, 0);
 	}
 })(global.Array);
