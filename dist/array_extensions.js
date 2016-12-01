@@ -1,5 +1,5 @@
 (function (Array) {
-	var extensions = [each, where, any, select, take, skip, first, last, count, index];
+	var extensions = [each, where, any, select, take, skip, first, last, count, index, pluck];
 
 	extensions.forEach((element) => {
 		if(!Array.prototype[element.name]) {
@@ -144,5 +144,9 @@
 			}
 		}
 		return -1;
+	}
+
+	function pluck(property) {
+		return this.map(element => element[property]);
 	}
 })(global.Array);
