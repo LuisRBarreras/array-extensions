@@ -1,15 +1,11 @@
 (function (Array) {
 	var extensions = [each, where, any, select, take, skip, first, last, count, index];
-	var errorMessages = extensions.reduce((ext, m) => {
-		ext[m.name] = `Function "${m.name}" already exists`;
-		return ext;
-	}, {});
 
 	extensions.forEach((element) => {
-		if (!Array.prototype[element.name]) {
-			Array.prototype[element.name] = element
+		if(!Array.prototype[element.name]) {
+			Array.prototype[element.name] = element;
 		} else {
-			throw errorMessages[element.name];
+			throw `Function "${element.name}" already exists`;
 		}
 	});
 
@@ -31,7 +27,7 @@
 		while (index < length) {
 			let response = callback.call(null, this[index]);
 			if (response === true) {
-				newArray.push(this[index])
+				newArray.push(this[index]);
 			}
 			index++;
 		}
@@ -46,7 +42,7 @@
 		while (index < length) {
 			let result = isFunction ? spec(this[index]) : this[index] === spec;
 			if (result) return true;
-			index++
+			index++;
 		}
 		return false;
 	}
@@ -89,16 +85,16 @@
 		var index = 0;
 		var isFunction = typeof callback === 'function';
 
-		if(isFunction) {
-			while(index < length) {
-				let result = callback.call(null, this[index]);
-				if(result) {
-					return this[index];
-				}
-				index++;
-			}
-		} else {
+		if(!isFunction) {
 			return this[0];
+		}
+
+		while(index < length) {
+			let result = callback.call(null, this[index]);
+			if(result) {
+				return this[index];
+			}
+			index++;
 		}
 		return null;
 	}
@@ -108,37 +104,33 @@
 		var index = length-1;
 		var isFunction = typeof callback === 'function';
 
-		if(isFunction) {
-			while(index >= 0) {
+		if(!isFunction) {
+			return this.pop();
+		}
+
+		while(index >= 0) {
 				let result = callback.call(null, this[index]);
 				if(result)  {
 					return this[index];
 				}
 				index--;
 			}
-		} else {
-			return this.pop();
-		}
 		return null;
 	}
 
 	function count(callback=null) {
-		var length = this.length;
-		var index = 0;
 		var isFunction = typeof callback === 'function';
-		var counter = 0;
-		if(!isFunction) {
-			return length;
-		} else {
-			while(index < length) {
-				let result = callback.call(null, this[index]);
-				if(result) {
-					counter++;
+		let cb = isFunction ?
+			(a, b) => {
+				 let result = callback(b);
+					if(result) {
+						a++;
+					}
+					return a;
 				}
-				index++;
-			}
-		}
-		return counter;
+			:
+				(a, b) => a + 1;
+		return this.reduce(cb, 0);
 	}
 
 	function index(spec) {
@@ -155,5 +147,4 @@
 		}
 		return -1;
 	}
-
 })(global.Array);
