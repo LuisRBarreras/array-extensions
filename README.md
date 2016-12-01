@@ -77,6 +77,51 @@ Creates a new Array which will not include the first howMany elements.
     howMany
         the size of array result if there are enough elements.
 
+## 7. first(spec) method
+Returns the first element on collection that satisfies the specification.
+This method could return a null value if the collection is empty or if there is not match element.
+
+- **Sintax**
+    ```array.first(spec)```
+
+- **Parameters**
+    * spec
+        Function or null value
+
+##8. last(spec) method
+Returns last element on collection that satisfies the specification.
+This methoud could return a null value if the colllection is empty or if there is not match element.
+
+- **Sintax**
+    ```array.last(number => number % 2 === 0)```
+- **Parameters**
+    * spec
+        Function or null value
+        
+##9. count(spec) method
+Returns the number of elements on the collection that satisfies the specification
+if no specification is present then it will return the array's length.
+
+- **Syntax**
+    ```array.count(number => number > 2)```
+- **Parameters**
+    * spec
+        Function or null value
+
+##10. index(spec) method
+Returns the zero based position in the array of the element that satisfies
+the specification. The specification can be either an object value or a function.
+
+- **Syntax**
+    ```
+    array.index(number => number === 1)
+    array.index(1)
+    ```
+
+- **Parameters**
+    * spec
+        Function or object value
+
 ## 15. flatten() method.
 Returns a new flat array, It extracts from the inner arrays and inserted
 in the container array in the same position

@@ -1,5 +1,5 @@
 (function (Array) {
-	var extensions = [each, where, any, select, take, skip, flatten];
+	var extensions = [each, where, any, select, take, skip, first, last, count, index, flatten];
 
 	extensions.forEach((element) => {
 		if(!Array.prototype[element.name]) {
@@ -77,8 +77,73 @@
 		if (isNotNumber) {
 			throw new TypeError('Excepted a number');
 		}
-
 		return this.slice(start, this.length);
+	}
+
+	function first(callback=null) {
+		var length = this.length;
+		var index = 0;
+		var isFunction = typeof callback === 'function';
+
+		if(!isFunction) {
+			return this[0];
+		}
+
+		while(index < length) {
+			let result = callback.call(null, this[index]);
+			if(result) {
+				return this[index];
+			}
+			index++;
+		}
+		return null;
+	}
+
+	function last(callback=null) {
+		var length = this.length;
+		var index = length-1;
+		var isFunction = typeof callback === 'function';
+
+		if(!isFunction) {
+			return this.pop();
+		}
+
+		while(index >= 0) {
+				let result = callback.call(null, this[index]);
+				if(result)  {
+					return this[index];
+				}
+				index--;
+			}
+		return null;
+	}
+
+	function count(callback=null) {
+		var isFunction = typeof callback === 'function';
+		let cb = isFunction ?
+			(a, b) => {
+				 let result = callback(b);
+					if(result) {
+						a++;
+					}
+					return a;
+				}
+			:
+				(a, b) => a + 1;
+		return this.reduce(cb, 0);
+	}
+
+	function index(spec) {
+		var length = this.length;
+		var isFunction = typeof spec === 'function';
+
+		for(let i=0; i < length; i++) {
+			let result = isFunction ? spec(this[i]) : this[i] === spec;
+			if(result) {
+				return i;
+			}
+		}
+		return -1;
 	}
 
 	function flatten() {
@@ -94,5 +159,4 @@
 		}
 		return result;
 	}
-
 })(global.Array);
