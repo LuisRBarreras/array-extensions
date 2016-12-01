@@ -156,9 +156,7 @@
 		if(anyIsString) {
 			return this.join("");
 		}
-
 		let cb = isFunction ? (a,b) => a + spec(b) : (a, b) => a + b;
-		
 		return this.reduce(cb, 0);
 	}
 })(global.Array);
