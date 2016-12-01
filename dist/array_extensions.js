@@ -123,16 +123,17 @@
 		var index = 0;
 		var isFunction = typeof callback === 'function';
 		var counter = 0;
+
 		if(!isFunction) {
 			return length;
-		} else {
-			while(index < length) {
-				let result = callback.call(null, this[index]);
-				if(result) {
-					counter++;
-				}
-				index++;
+		}
+
+		while(index < length) {
+			let result = callback.call(null, this[index]);
+			if(result) {
+				counter++;
 			}
+			index++;
 		}
 		return counter;
 	}
