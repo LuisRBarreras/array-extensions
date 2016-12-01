@@ -153,10 +153,12 @@
 	function sum(spec=null) {
 		let anyIsString = this.any(x => typeof x === 'string');
 		let isFunction = typeof spec === 'function';
+
 		if(anyIsString) {
 			return this.join("");
 		}
-		let cb = isFunction ? (a,b) => a + spec(b) : (a, b) => a + b;
+
+		let cb = isFunction ? (a, b) => a + spec(b) : (a, b) => a + b;
 		return this.reduce(cb, 0);
 	}
 })(global.Array);
