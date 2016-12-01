@@ -135,15 +135,13 @@
 
 	function index(spec) {
 		var length = this.length;
-		var arrayIndex = 0;
 		var isFunction = typeof spec === 'function';
 
-		while(arrayIndex < length) {
-			let result = isFunction ? spec.call(null, this[arrayIndex]) : this[arrayIndex] === spec;
+		for(let i=0; i < length; i++) {
+			let result = isFunction ? spec(this[i]) : this[i] === spec;
 			if(result) {
-				return arrayIndex;
+				return i;
 			}
-			arrayIndex++;
 		}
 		return -1;
 	}
