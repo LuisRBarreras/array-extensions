@@ -151,24 +151,14 @@
 	}
 
 	function sum(spec=null) {
-		let result;
-		let anyIsString = this.any(x=> typeof x === 'string');
-
+		let anyIsString = this.any(x => typeof x === 'string');
+		let isFunction = typeof spec === 'function';
 		if(anyIsString) {
-			result = this.join("");
-		} else if(spec) {
-			let length = this.length;
-			let arrayIndex = 0;
-			let total = 0;
-			while(arrayIndex < length) {
-				total += spec.call(null,this[arrayIndex]);
-				arrayIndex++;
-			}
-			result = total;
-		} else {
-			spec = (a, b) => a + b;
-			result = this.reduce(spec, 0);
+			return this.join("");
 		}
-		return result;
+
+		let cb = isFunction ? (a,b) => a + spec(b) : (a, b) => a + b;
+		
+		return this.reduce(cb, 0);
 	}
 })(global.Array);
