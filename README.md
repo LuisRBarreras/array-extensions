@@ -87,3 +87,12 @@ This method could return a null value if the collection is empty or if there is 
     * spec
         Function or null value
 
+##8. last(spec) method
+Returns last element on collection that satisfies the specification.
+This methoud could return a null value if the colllection is empty or if there is not match element.
+
+- **Sintax**
+    ```array.last(number => number % 2 === 0)```
+- **Parameters**
+    * spec
+        Function or null value

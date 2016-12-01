@@ -1,5 +1,5 @@
 (function (Array) {
-	var extensions = [each, where, any, select, take, skip, first];
+	var extensions = [each, where, any, select, take, skip, first, last];
 
 	extensions.forEach((element) => {
 		if(!Array.prototype[element.name]) {
@@ -96,6 +96,25 @@
 			}
 			index++;
 		}
+		return null;
+	}
+
+	function last(callback=null) {
+		var length = this.length;
+		var index = length-1;
+		var isFunction = typeof callback === 'function';
+
+		if(!isFunction) {
+			return this.pop();
+		}
+
+		while(index >= 0) {
+				let result = callback.call(null, this[index]);
+				if(result)  {
+					return this[index];
+				}
+				index--;
+			}
 		return null;
 	}
 })(global.Array);
