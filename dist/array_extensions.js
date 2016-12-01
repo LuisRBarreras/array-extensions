@@ -1,5 +1,5 @@
 (function (Array) {
-	var extensions = [each, where, any, select, take, skip, first, last, count];
+	var extensions = [each, where, any, select, take, skip, first, last, count, index];
 
 	extensions.forEach((element) => {
 		if(!Array.prototype[element.name]) {
@@ -131,5 +131,18 @@
 			:
 				(a, b) => a + 1;
 		return this.reduce(cb, 0);
+	}
+
+	function index(spec) {
+		var length = this.length;
+		var isFunction = typeof spec === 'function';
+
+		for(let i=0; i < length; i++) {
+			let result = isFunction ? spec(this[i]) : this[i] === spec;
+			if(result) {
+				return i;
+			}
+		}
+		return -1;
 	}
 })(global.Array);
