@@ -119,22 +119,17 @@
 	}
 
 	function count(callback=null) {
-		var length = this.length;
-		var index = 0;
 		var isFunction = typeof callback === 'function';
-		var counter = 0;
-
-		if(!isFunction) {
-			return length;
-		}
-
-		while(index < length) {
-			let result = callback.call(null, this[index]);
-			if(result) {
-				counter++;
-			}
-			index++;
-		}
-		return counter;
+		let cb = isFunction ?
+			(a, b) => {
+				 let result = callback(b);
+					if(result) {
+						a++;
+					}
+					return a;
+				}
+			:
+				(a, b) => a + 1;
+		return this.reduce(cb, 0);
 	}
 })(global.Array);
