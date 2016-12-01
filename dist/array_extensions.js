@@ -104,17 +104,17 @@
 		var index = length-1;
 		var isFunction = typeof callback === 'function';
 
-		if(isFunction) {
-			while(index >= 0) {
+		if(!isFunction) {
+			return this.pop();
+		}
+
+		while(index >= 0) {
 				let result = callback.call(null, this[index]);
 				if(result)  {
 					return this[index];
 				}
 				index--;
 			}
-		} else {
-			return this.pop();
-		}
 		return null;
 	}
 })(global.Array);
