@@ -19,10 +19,10 @@ describe('Array #max', function () {
 	it('Should use comparator to find max element', function() {
 		//Setup
 		let expected = { "name": "pablo", "age": 20 };
-		let callback = (a, b) => a.age - b.age;
+		let comparator = (a, b) => a.age - b.age;
 
 		//Execute
-		let result = fixtures.peopleRandom.max(callback);
+		let result = fixtures.peopleRandom.max(comparator);
 
 		// Compare
 		assert.deepEqual(expected, result);
@@ -31,10 +31,10 @@ describe('Array #max', function () {
 	it('Should use comparator to find max element in different order', function() {
 		//Setup
 		let expected = { name: 'pedro', age: 19 };
-		let callback = (a, b) => a.age - b.age;
+		let comparator = (a, b) => a.age - b.age;
 
 		//Execute
-		var result = fixtures.people.max(callback);
+		var result = fixtures.people.max(comparator);
 
 		//Compare
 		assert.deepEqual(expected, result);
