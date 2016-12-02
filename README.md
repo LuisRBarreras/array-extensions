@@ -15,9 +15,6 @@ Method executes a provided function once per array element.
         * index
           The index of the current element being processed in the array.
         
-
-
-
 ## 2. where(spec) method
 Creates a new array that contains all the elements that satisfies the given specification.
 
@@ -150,10 +147,9 @@ the array is empty. If not `comparator` is specified then it evaluates
 the array elements as if they are numbers.
 
 - **Syntax**
-    ` array.max(function(a,b) { 
-        a.length - b.length
-    })`
-    
+    ```
+        array.max((a, b) => a.age - b.age)
+    ```
 - **Parameters**
     * comparator
         Function or null value
@@ -165,9 +161,9 @@ the array is empty. If not `comparator` is specified then it evaluates
 the array elements as if they are numbers.
 
 - **Syntax**
-    ` array.min(function(a,b) { 
-        a.length - b.length
-    })`
+    ```
+         array.min((a, b) => a.age - b.age)
+    ```
 - **Parameters**
     * comparator
         Function or null value

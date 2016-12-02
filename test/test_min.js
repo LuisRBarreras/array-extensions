@@ -28,10 +28,10 @@ describe('Array #min', function () {
 	it('Should find the person older, checking the attribute age', function() {
 		//Setup
 		let expected = { name: 'juan', age: 15 };
-		let callback = (a, b) => a.age - b.age;
+		let comparator = (a, b) => a.age - b.age;
 
 		//Execute
-		var result = fixtures.people.min(callback);
+		var result = fixtures.people.min(comparator);
 
 		//Compare
 		assert.deepEqual(expected, result);
