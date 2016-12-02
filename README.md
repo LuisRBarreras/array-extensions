@@ -122,6 +122,27 @@ the specification. The specification can be either an object value or a function
     * spec
         Function or object value
 
+##11. pluck(property) method
+Returns a new array containing that property value for each element on the array.
+
+- **Syntax**
+    ``` array.pluck('property')```
+
+- **Parameters**
+    * property
+        String representing a name property
+
+## 12. sum(spec) method.
+Returns the summatory of the result of executing `spec` function on each arrays element.
+If there is not a `spec` function will return the summatory of the array's elements.
+Note: that if you have elements that are not numbers it will concatenate string.
+
+- **Syntax**
+    ``` array.sum(x => x * 2)```
+- **Parameters**
+    * property
+        Function or null value
+
 ## 15. flatten() method.
 Returns a new flat array, It extracts from the inner arrays and inserted
 in the container array in the same position
