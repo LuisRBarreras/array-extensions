@@ -162,18 +162,20 @@
 		return this.reduce(cb, 0);
     }
 
-    function flatten(container=null) {
-        var result = container ? container : []; 
-        var length = this.length;
-        
+
+    function flatten() {
+        return privateFlatten.call(this, []);
+	}
+    
+    function privateFlatten(container) {
         return this.reduce((a, b) => {
 			let isArray = Array.isArray(b);
 			if(isArray) {
-                flatten.call(b, result);
+                privateFlatten.call(b, container);
 			} else {
 				a.push(b);
 			}
 			return a;
-		}, result);    
-	}
+		}, container);
+    }
 })(global.Array);
