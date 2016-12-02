@@ -1,5 +1,5 @@
 (function (Array) {
-	var extensions = [each, where, any, select, take, skip, first, last, count, index, pluck, sum];
+	var extensions = [each, where, any, select, take, skip, first, last, count, index, pluck, sum, max];
 
 	extensions.forEach((element) => {
 		if(!Array.prototype[element.name]) {
@@ -161,4 +161,19 @@
 		let cb = isFunction ? (a, b) => a + spec(b) : (a, b) => a + b;
 		return this.reduce(cb, 0);
 	}
+
+	function max(comparator=null) {
+		var length = this.length;
+		if(length < 1) {
+			return null;
+		}
+
+		if(comparator === null) {
+			return Math.max(...this);
+		}
+
+		let cb = (a,b) => comparator(a ,b) > 0 ? a : b;
+		return this.reduce(cb, this[0]);
+	}
+
 })(global.Array);

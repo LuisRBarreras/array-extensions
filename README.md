@@ -15,9 +15,6 @@ Method executes a provided function once per array element.
         * index
           The index of the current element being processed in the array.
         
-
-
-
 ## 2. where(spec) method
 Creates a new array that contains all the elements that satisfies the given specification.
 
@@ -75,7 +72,9 @@ Creates a new Array which will not include the first howMany elements.
 
 - **Parameters**
     howMany
+        the size of array result if there are enough elements.
         
+
 ## 7. first(spec) method
 Returns the first element on collection that satisfies the specification.
 This method could return a null value if the collection is empty or if there is not match element.
@@ -141,3 +140,18 @@ Note: that if you have elements that are not numbers it will concatenate string.
 - **Parameters**
     * property
         Function or null value
+
+## 13. max(comparator) method
+Return the maximum value on the collection, a null value is return if
+the array is empty. If not `comparator` is specified then it evaluates
+the array elements as if they are numbers.
+
+- **Syntax**
+    ```
+        array.max((a, b) => a.age - b.age)
+    ```
+    
+- **Parameters**
+    * comparator
+        Function or null value
+        
