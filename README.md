@@ -1,11 +1,13 @@
 # Array-extensions
-Exercise to Extend Array prototype
+Exercise to Extend Array prototype adding a very useful functional programming helpers.
 
 ## 1. each(callback) method
 Method executes a provided function once per array element.
 
 - **Sintax**
-   ```array.each(callback)```
+   ```
+        array.each(callback)
+    ```
 
 - **Parameters**
     * callback
