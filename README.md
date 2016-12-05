@@ -5,7 +5,7 @@ Exercise to Extend Array prototype adding a very useful functional programming h
 Method executes a provided function once per array element.
 
 - **Sintax**
-   ```
+   ```js
         array.each(callback)
     ```
 
@@ -21,7 +21,9 @@ Method executes a provided function once per array element.
 Creates a new array that contains all the elements that satisfies the given specification.
 
 - **Sintax**
-    ```array.where(spec)```
+    ```js
+        array.where(spec)
+    ```
 
 - **Parameters**
     * spec
