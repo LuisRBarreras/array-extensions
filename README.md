@@ -149,7 +149,20 @@ the array elements as if they are numbers.
     ```
         array.max((a, b) => a.age - b.age)
     ```
-    
+- **Parameters**
+    * comparator
+        Function or null value
+
+
+## 14. min(comparator) method
+Return the minimum value on the collection, a null value is return if
+the array is empty. If not `comparator` is specified then it evaluates
+the array elements as if they are numbers.
+
+- **Syntax**
+    ```
+         array.min((a, b) => a.age - b.age)
+    ```
 - **Parameters**
     * comparator
         Function or null value

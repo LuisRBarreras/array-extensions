@@ -1,4 +1,32 @@
-/**
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: array_extensions.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: array_extensions.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
  * Extend Array prototype adding a very useful functional programming helpers.
  * @namespace ArrayExtensions
  */
@@ -22,7 +50,7 @@
 		var length = this.length;
 		var index = 0;
 
-		while (index < length) {
+		while (index &lt; length) {
 			callback.call(null, this[index], index);
 			index++;
 		}
@@ -39,7 +67,7 @@
 		var index = 0;
 		var newArray = [];
 
-		while (index < length) {
+		while (index &lt; length) {
 			let response = callback.call(null, this[index]);
 			if (response === true) {
 				newArray.push(this[index]);
@@ -50,7 +78,7 @@
 	}
 
     /** 
-     * Returns a true value if any of the elements in the array satisfies <b><i>spec</i></b>.
+     * Returns a true value if any of the elements in the array satisfies &lt;b>&lt;i>spec&lt;/i>&lt;/b>.
      * @memberof ArrayExtensions
      * @param {Function} spec - whenever the function returns a true value then immediately stop execution and returns true. 
      * @return {Boolean}
@@ -60,7 +88,7 @@
 		var index = 0;
 		var isFunction = (typeof spec === 'function');
 
-		while (index < length) {
+		while (index &lt; length) {
 			let result = isFunction ? spec(this[index]) : this[index] === spec;
 			if (result) return true;
 			index++;
@@ -69,7 +97,7 @@
 	}
 
     /** 
-     * Creates a new collection containing the result from the execution of the <b><i>spec</i></b>.
+     * Creates a new collection containing the result from the execution of the &lt;b>&lt;i>spec&lt;/i>&lt;/b>.
      * @memberof ArrayExtensions
      * @param {Function} spec - Function to execute for each element and should return a value.
      * @return {Boolean}
@@ -95,7 +123,7 @@
 			throw new TypeError('Expected a number');
 		}
 
-		while (index < length) {
+		while (index &lt; length) {
 			let response = spec.call(null, this[index]);
 			if (response) {
 				newArray.push(this[index]);
@@ -123,7 +151,7 @@
 	}
 
     /**
-     * Returns the first element on collection that satisfies the <b><i>spec</i></b>. </br>
+     * Returns the first element on collection that satisfies the &lt;b>&lt;i>spec&lt;/i>&lt;/b>. &lt;/br>
      * If the spec is null returns the first element.
      * @memberof ArrayExtensions
      * @param {Function} spec - Executes for each value until one satisfies the condition. 
@@ -138,7 +166,7 @@
 			return this[0];
 		}
 
-		while(index < length) {
+		while(index &lt; length) {
 			let result = spec.call(null, this[index]);
 			if(result) {
 				return this[index];
@@ -149,8 +177,8 @@
 	}
 
     /**
-     * Returns the last element on collection that satisfies the <b><i>spec</i></b>. <br>
-     * If <b><i>spec</i></b> is null returns the last element.
+     * Returns the last element on collection that satisfies the &lt;b>&lt;i>spec&lt;/i>&lt;/b>. &lt;br>
+     * If &lt;b>&lt;i>spec&lt;/i>&lt;/b> is null returns the last element.
      * @memberof ArrayExtensions
      * @param {Function} spec - Executes for each value until one satisfies the condition. Iteration order is backwards.
      * @return {Object} element
@@ -175,8 +203,8 @@
 	}
 
     /**
-     * Returns the numbers of elements on the collection that satisfies the <b><i>spec</i></b>. </br>
-     * If <b><i>spec</i></b> is null returns the array length.
+     * Returns the numbers of elements on the collection that satisfies the &lt;b>&lt;i>spec&lt;/i>&lt;/b>. &lt;/br>
+     * If &lt;b>&lt;i>spec&lt;/i>&lt;/b> is null returns the array length.
      * @memberof ArrayExtensions
      * @param {Function} spec - Executes for each element.
      * @return {Number} the number of elements that satisfies the spec. 
@@ -197,7 +225,7 @@
 	}
 
     /**
-     * Returns the zero based position in the array of the element that satisfies the <b><i>spec</i></b>.
+     * Returns the zero based position in the array of the element that satisfies the &lt;b>&lt;i>spec&lt;/i>&lt;/b>.
      * @memberof ArrayExtensions
      * @param {Function} spec - Executes for each element.
      * @return {Number} Index of the element found.
@@ -206,7 +234,7 @@
 		var length = this.length;
 		var isFunction = typeof spec === 'function';
 
-		for(let i=0; i < length; i++) {
+		for(let i=0; i &lt; length; i++) {
 			let result = isFunction ? spec(this[i]) : this[i] === spec;
 			if(result) {
 				return i;
@@ -226,9 +254,9 @@
 	}
 
     /**
-     * Returns the summatory of the result of executing <b><i>spec</i></b> function on each arrays element.</br>
-     * If there is not a <b><i>spec</i></b> function will return the summatory of the array's elements.</br>
-     * <strong>Note:</strong> In case that elements are not numbers it will concatenate as string.
+     * Returns the summatory of the result of executing &lt;b>&lt;i>spec&lt;/i>&lt;/b> function on each arrays element.&lt;/br>
+     * If there is not a &lt;b>&lt;i>spec&lt;/i>&lt;/b> function will return the summatory of the array's elements.&lt;/br>
+     * &lt;strong>Note:&lt;/strong> In case that elements are not numbers it will concatenate as string.
      * @memberof ArrayExtensions
      * @returns {Number|String} summatory
      */
@@ -245,15 +273,15 @@
     }
 
     /**
-     * Returns the maximum value on the collection, In case of array empty returns null. </br> 
-     * If <strong><i>comparator</i></strong> is not specified then it evaluates the array elements as numbers.
+     * Returns the maximum value on the collection, In case of array empty returns null. &lt;/br> 
+     * If &lt;strong>&lt;i>comparator&lt;/i>&lt;/strong> is not specified then it evaluates the array elements as numbers.
      * @memberof ArrayExtensions
-     * @param {Function} comparator Receives 2 parameters, <strong><i>a</i></strong> and <strong><i>b</strong></i>. </br> Return a negative number for a < b scenario, </br> zero when a === b and finally a positive number when a > b.
+     * @param {Function} comparator Receives 2 parameters, &lt;strong>&lt;i>a&lt;/i>&lt;/strong> and &lt;strong>&lt;i>b&lt;/strong>&lt;/i>. &lt;/br> Return a negative number for a &lt; b scenario, &lt;/br> zero when a === b and finally a positive number when a > b.
      * @returns {Number} Max value
      */
 	function max(comparator=null) {
 		var length = this.length;
-		if(length < 1) {
+		if(length &lt; 1) {
 			return null;
 		}
 
@@ -267,15 +295,15 @@
 
 
     /**
-     * Returns the minimum value on the collection, In case of array empty returns null. </br> 
-     * If <strong><i>comparator</i></strong> is not specified then it evaluates the array elements as numbers.
+     * Returns the minimum value on the collection, In case of array empty returns null. &lt;/br> 
+     * If &lt;strong>&lt;i>comparator&lt;/i>&lt;/strong> is not specified then it evaluates the array elements as numbers.
      * @memberof ArrayExtensions
-     * @param {Function} comparator Receives 2 parameters, <strong><i>a</i></strong> and <strong><i>b</strong></i>. </br> Return a negative number for a < b scenario, </br> zero when a === b and finally a positive number when a > b.
+     * @param {Function} comparator Receives 2 parameters, &lt;strong>&lt;i>a&lt;/i>&lt;/strong> and &lt;strong>&lt;i>b&lt;/strong>&lt;/i>. &lt;/br> Return a negative number for a &lt; b scenario, &lt;/br> zero when a === b and finally a positive number when a > b.
      * @returns {Number} Min value
      */
 	function min(comparator=null) {
 		var length = this.length;
-		if(length < 1) {
+		if(length &lt; 1) {
 			return null;
 		}
 
@@ -283,7 +311,7 @@
 			return Math.min(...this);
 		}
 
-		let cb = (a, b) => comparator(a, b) < 0 ? a : b;
+		let cb = (a, b) => comparator(a, b) &lt; 0 ? a : b;
 		return this.reduce(cb, this[0]);
 	}
 
@@ -309,3 +337,26 @@
 
 })(global.Array);
 
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li><a href="ArrayExtensions.html">ArrayExtensions</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a> on Mon Dec 05 2016 12:26:44 GMT-0700 (MST)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
