@@ -73,7 +73,6 @@ Creates a new Array which will not include the first howMany elements.
 - **Parameters**
     howMany
         the size of array result if there are enough elements.
-        
 
 ## 7. first(spec) method
 Returns the first element on collection that satisfies the specification.
@@ -167,4 +166,7 @@ the array elements as if they are numbers.
 - **Parameters**
     * comparator
         Function or null value
-        
+
+## 15. flatten() method.
+Returns a new flat array, It extracts from the inner arrays and inserted
+in the container array in the same position
