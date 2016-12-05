@@ -1,5 +1,5 @@
 (function (Array) {
-	var extensions = [each, where, any, select, take, skip, first, last, count, index, pluck, sum, max];
+	var extensions = [each, where, any, select, take, skip, first, last, count, index, pluck, sum, max, min];
 
 	extensions.forEach((element) => {
 		if(!Array.prototype[element.name]) {
@@ -176,4 +176,17 @@
 		return this.reduce(cb, this[0]);
 	}
 
+	function min(comparator=null) {
+		var length = this.length;
+		if(length < 1) {
+			return null;
+		}
+
+		if(comparator === null) {
+			return Math.min(...this);
+		}
+
+		let cb = (a, b) => comparator(a, b) < 0 ? a : b;
+		return this.reduce(cb, this[0]);
+	}
 })(global.Array);
