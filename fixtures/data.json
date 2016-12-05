@@ -5,6 +5,12 @@
     { "name": "topo", "age": 18 },
     { "name": "pedro", "age": 19 }
   ],
+  "peopleRandom" : [
+    { "name": "juan", "age": 15 },
+    { "name": "pablo", "age": 20 },
+    { "name": "topo", "age": 18 },
+    { "name": "pedro", "age": 19 }
+  ],
   "numbers": [1, 2, 3, 4, 5],
   "children": [
         { "name": "ana", "sex": "f" },
@@ -20,5 +26,6 @@
     ],
     15, 16
   ],
-  "mixValues": ["hello", 1, 10, "world"]
+  "mixValues": ["hello", 1, 10, "world"],
+  "arrayEmpty": []
 }

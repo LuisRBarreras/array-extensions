@@ -1,5 +1,5 @@
 (function (Array) {
-	var extensions = [each, where, any, select, take, skip, first, last, count, index, pluck, sum, flatten];
+	var extensions = [each, where, any, select, take, skip, first, last, count, index, pluck, sum, max, flatten];
 
 	extensions.forEach((element) => {
 		if(!Array.prototype[element.name]) {
@@ -162,11 +162,24 @@
 		return this.reduce(cb, 0);
     }
 
+    function max(comparator=null) {
+		var length = this.length;
+		if(length < 1) {
+			return null;
+		}
+
+		if(comparator === null) {
+			return Math.max(...this);
+		}
+
+		let cb = (a,b) => comparator(a ,b) > 0 ? a : b;
+		return this.reduce(cb, this[0]);
+	}
 
     function flatten() {
         return privateFlatten.call(this, []);
 	}
-    
+
     function privateFlatten(container) {
         return this.reduce((a, b) => {
 			let isArray = Array.isArray(b);
@@ -179,3 +192,4 @@
 		}, container);
     }
 })(global.Array);
+
