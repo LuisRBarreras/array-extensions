@@ -36,7 +36,9 @@ Creates a new array that contains all the elements that satisfies the given spec
 This method shall return a true value if any of the elements in the array satisfies the given spec. 
 
 - **Sintax**
+    ```js
     array.any(spec)
+    ```
 
 - **Parameters**
     * spec
@@ -45,11 +47,13 @@ This method shall return a true value if any of the elements in the array satisf
         In case that spec parameter is not a function object, 
         then it will be tested against each element of the array.
         
-## 4. select(spec) method.**
+## 4. select(spec) method.
 Creates a new collection containing the elements returned by the spec function. 
 
 - **Sintax**
-    ```array.select(spec)```
+    ```js
+        array.select(spec)
+    ```
 
 - **Parameters**
     * spec
@@ -60,7 +64,9 @@ Creates a new collection containing the elements returned by the spec function.
 Creates a new array containing ideally howMany elements, it could be less but no more.
 
 - **Sintax**
-    ```array.take(howMany, spec)```
+    ```js
+        array.take(howMany, spec)
+    ```
 
 - **Parameters**
     * howMany
@@ -72,7 +78,9 @@ Creates a new array containing ideally howMany elements, it could be less but no
 Creates a new Array which will not include the first howMany elements.
 
 - **Sintax**
-    ```array.skip(howMany)```
+    ```js
+        array.skip(howMany)
+    ```
 
 - **Parameters**
     howMany
@@ -83,7 +91,9 @@ Returns the first element on collection that satisfies the specification.
 This method could return a null value if the collection is empty or if there is not match element.
 
 - **Sintax**
-    ```array.first(spec)```
+    ```js
+        array.first(spec)
+    ```
 
 - **Parameters**
     * spec
@@ -94,7 +104,9 @@ Returns last element on collection that satisfies the specification.
 This methoud could return a null value if the colllection is empty or if there is not match element.
 
 - **Sintax**
-    ```array.last(number => number % 2 === 0)```
+    ```js
+        array.last(number => number % 2 === 0)
+    ```
 - **Parameters**
     * spec
         Function or null value
@@ -104,7 +116,9 @@ Returns the number of elements on the collection that satisfies the specificatio
 if no specification is present then it will return the array's length.
 
 - **Syntax**
-    ```array.count(number => number > 2)```
+    ```js
+        array.count(number => number > 2)
+    ```
 - **Parameters**
     * spec
         Function or null value
@@ -114,9 +128,9 @@ Returns the zero based position in the array of the element that satisfies
 the specification. The specification can be either an object value or a function.
 
 - **Syntax**
-    ```
-    array.index(number => number === 1)
-    array.index(1)
+    ```js
+        array.index(number => number === 1)
+        array.index(1)
     ```
 
 - **Parameters**
@@ -127,7 +141,9 @@ the specification. The specification can be either an object value or a function
 Returns a new array containing that property value for each element on the array.
 
 - **Syntax**
-    ``` array.pluck('property')```
+    ```js 
+        array.pluck('property')
+    ```
 
 - **Parameters**
     * property
@@ -139,7 +155,9 @@ If there is not a `spec` function will return the summatory of the array's eleme
 Note: that if you have elements that are not numbers it will concatenate string.
 
 - **Syntax**
-    ``` array.sum(x => x * 2)```
+    ```js 
+        array.sum(x => x * 2)
+    ```
 - **Parameters**
     * property
         Function or null value
@@ -150,7 +168,7 @@ the array is empty. If not `comparator` is specified then it evaluates
 the array elements as if they are numbers.
 
 - **Syntax**
-    ```
+    ```js
         array.max((a, b) => a.age - b.age)
     ```
 - **Parameters**
@@ -164,7 +182,7 @@ the array is empty. If not `comparator` is specified then it evaluates
 the array elements as if they are numbers.
 
 - **Syntax**
-    ```
+    ```js
          array.min((a, b) => a.age - b.age)
     ```
 - **Parameters**
