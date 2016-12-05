@@ -3,7 +3,7 @@
  * @namespace ArrayExtensions
  */
 (function (Array) {
-	var extensions = [each, where, any, select, take, skip, first, last, count, index, pluck, sum, max, min];
+	var extensions = [each, where, any, select, take, skip, first, last, count, index, pluck, sum, max, min, flatten];
 
 	extensions.forEach((element) => {
 		if(!Array.prototype[element.name]) {
@@ -242,7 +242,7 @@
 
 		let cb = isFunction ? (a, b) => a + spec(b) : (a, b) => a + b;
 		return this.reduce(cb, 0);
-	}
+    }
 
     /**
      * Returns the maximum value on the collection, In case of array empty returns null. </br> 
@@ -265,6 +265,14 @@
 		return this.reduce(cb, this[0]);
 	}
 
+
+    /**
+     * Returns the minimum value on the collection, In case of array empty returns null. </br> 
+     * If <strong><i>comparator</i></strong> is not specified then it evaluates the array elements as numbers.
+     * @memberof ArrayExtensions
+     * @param {Function} comparator Receives 2 parameters, <strong><i>a</i></strong> and <strong><i>b</strong></i>. </br> Return a negative number for a < b scenario, </br> zero when a === b and finally a positive number when a > b.
+     * @returns {Number} Min value
+     */
 	function min(comparator=null) {
 		var length = this.length;
 		if(length < 1) {
@@ -278,4 +286,26 @@
 		let cb = (a, b) => comparator(a, b) < 0 ? a : b;
 		return this.reduce(cb, this[0]);
 	}
+
+    /**
+     * Returns a new flat array, It extracts from the inner arrays and inserted in the container array in the same position.
+     * @memberof ArrayExtensions
+     */
+    function flatten() {
+        return privateFlatten.call(this, []);
+	}
+
+    function privateFlatten(container) {
+        return this.reduce((a, b) => {
+			let isArray = Array.isArray(b);
+			if(isArray) {
+                privateFlatten.call(b, container);
+			} else {
+				a.push(b);
+			}
+			return a;
+		}, container);
+    }
+
 })(global.Array);
+
