@@ -175,7 +175,7 @@
 	}
 
     /**
-     * Returns the numbers of elemets on the collection that satisfies the <b><i>spec</i></b>. </br>
+     * Returns the numbers of elements on the collection that satisfies the <b><i>spec</i></b>. </br>
      * If <b><i>spec</i></b> is null returns the array length.
      * @memberof ArrayExtensions
      * @param {Function} spec - Executes for each element.
